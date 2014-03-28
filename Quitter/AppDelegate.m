@@ -7,6 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "TweetListViewController.h"
+#import "TwitterClient.h"
+
+@interface AppDelegate ()
+
+@property (strong, nonatomic) TwitterClient *twitterClient;
+
+@end
 
 @implementation AppDelegate
 
@@ -14,9 +22,64 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+	
+	TweetListViewController *tweetListViewController = [[TweetListViewController alloc] init];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tweetListViewController];
+	self.window.rootViewController = navController;
+	
+	[navController.navigationBar setBarTintColor:[UIColor colorWithRed:0.475 green:0.722 blue:0.918 alpha:1.0]];
+	[navController.navigationBar setTranslucent:YES];
+	
+	[[UINavigationBar appearance] setTitleTextAttributes:@{
+		NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]/*,
+		NSFontAttributeName: [UIFont fontWithName:@"Arial-Bold" size:0.0]*/
+	}];
+	
+	/*
+	// Use UIAppearance proxy to style all UIBarButtonItems in application.
+	NSDictionary *barButtonAppearanceDict = @{ NSFontAttributeName : [UIFont fontWithName:@"Avenir-Medium" size:20.0] };
+	[[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
+	[[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(-1.0, -1.5) forBarMetrics:UIBarMetricsDefault];
+	//	[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:<#(UIOffset)#> forBarMetrics:<#(UIBarMetrics)#>
+	
+	[businessListViewController setNeedsStatusBarAppearanceUpdate];
+	*/
+	
+	/*
+	 // Dump font families/names
+	 for (NSString* family in [UIFont familyNames]) {
+	 NSLog(@"%@", family);
+	 for (NSString* name in [UIFont fontNamesForFamilyName: family]) {
+	 NSLog(@"  %@", name);
+	 }
+	 }
+	 */
+	
+	self.twitterClient = [TwitterClient instance];
+	[self.twitterClient login];
+	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+	if ([url.scheme isEqualToString:@"quitterapp"]) {
+		if ([url.host isEqualToString:@"oauth-login"]) {
+			NSString *accessTokenPath = @"oauth/access_token";
+			
+			[self.twitterClient fetchAccessTokenWithPath:accessTokenPath method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query] success:^(BDBOAuthToken *accessToken) {
+				NSLog(@"got access token");
+				[self.twitterClient.requestSerializer saveAccessToken: accessToken];
+			} failure:^(NSError *error) {
+				NSLog(@"error getting access token%@", error);
+			}];
+		}
+		
+		return YES;
+	}
+	
+	return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
