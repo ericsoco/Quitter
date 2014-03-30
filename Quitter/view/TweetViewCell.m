@@ -39,14 +39,14 @@
 }
 
 - (void)initWithModel:(TweetModel *)model {
-	self.usernameLabel.text = model.userName;
+	self.usernameLabel.text = model.user.name;
 	self.tweetLabel.text = model.text;
-	self.screennameLabel.text = model.userScreenName;
+	self.screennameLabel.text = model.user.screenName;
 	
 	
 	self.profileImageView.layer.cornerRadius = 4.0;
 	self.profileImageView.layer.masksToBounds = YES;
-	[self.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.userProfileImageUrl]]
+	[self.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.user.profileImageUrl]]
 						   placeholderImage:nil//[UIImage imageNamed:@"placeholder-avatar"]
 									success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
 										self.profileImageView.image = image;

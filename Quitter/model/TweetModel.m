@@ -29,9 +29,10 @@
 		model.id = json[@"id_str"];
 		model.text = json[@"text"];
 		model.numRetweets = json[@"retweet_count"];
-		model.userName = json[@"user"][@"name"];
-		model.userScreenName = json[@"user"][@"screen_name"];
-		model.userProfileImageUrl = json[@"user"][@"profile_image_url_https"];
+		model.user = [UserModel initWithJSON:json[@"user"]];
+//		model.userName = json[@"user"][@"name"];
+//		model.userScreenName = json[@"user"][@"screen_name"];
+//		model.userProfileImageUrl = json[@"user"][@"profile_image_url_https"];
 		
 		/*
 		model.locationString = [NSString stringWithFormat:@"%@, %@", model.address, model.neighborhood];

@@ -30,10 +30,33 @@
 	return instance;
 }
 
+@synthesize authorizedUser = _authorizedUser;
+
+- (UserModel *)authorizedUser {
+	if (!_authorizedUser) {
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		NSData *userData = [defaults objectForKey:@"authorizedUser"];
+		_authorizedUser = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+	}
+	
+	return _authorizedUser;
+}
+
+- (void)setAuthorizedUser:(UserModel *)authorizedUser {
+	NSLog(@"setAuthorizedUser:%@", authorizedUser);
+	_authorizedUser = authorizedUser;
+	
+	NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:_authorizedUser];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:userData forKey:@"authorizedUser"];
+	[defaults synchronize];
+}
+
 - (void)authorizeApp {
 	
 	// Remove stale access token when attempting to login again
 	[self.requestSerializer removeAccessToken];
+	self.authorizedUser = nil;
 	
 	NSString *requestTokenPath = @"oauth/request_token";
 	NSString *authorizeURL = @"https://api.twitter.com/oauth/authorize";
@@ -55,7 +78,6 @@
 - (void)fetchHomeTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success {
 	
 	NSString *requestPath = @"1.1/statuses/home_timeline.json";
-//	NSDictionary *params = @{@"screen_name": @"ericsoco"};
 	
 	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"error fetching tweets:%@", error);
@@ -69,6 +91,31 @@
 				[tweetModels addObject:[TweetModel initWithJSON:tweetData]];
 			}
 			success(tweetModels);
+		} else {
+			// bad server response
+			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
+										 userInfo:@{@"message": @"Invalid response",
+													@"response": response
+													}]);
+		}
+	} failure:failure];
+	
+}
+
+- (void)fetchAccountCredentials:(void (^)(UserModel *userModel))success {
+	
+	NSString *requestPath = @"1.1/account/verify_credentials.json";
+	
+	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"error verifying account credentials:%@", error);
+		//		[ZAActivityBar showErrorWithStatus:@"Something went wrong. Please pull down to reload tweets."];
+	};
+	
+	[self GET:requestPath parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
+		if ([response isKindOfClass:[NSDictionary class]]) {
+			UserModel *userModel = [UserModel initWithJSON:response];
+			self.authorizedUser = userModel;
+			success(userModel);
 		} else {
 			// bad server response
 			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1

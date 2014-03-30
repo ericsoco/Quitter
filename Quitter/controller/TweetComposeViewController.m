@@ -7,6 +7,9 @@
 //
 
 #import "TweetComposeViewController.h"
+#import "UIImageView+AFNetworking.h"
+#import "TwitterClient.h"
+#import "UserModel.h"
 
 @interface TweetComposeViewController ()
 
@@ -53,8 +56,25 @@
 	self.composeTextView.delegate = self;
 	
 	self.tweetModel = [[TweetModel alloc] init];
-	self.tweetModel.userName = @"Eric Socolofsky";
-	self.tweetModel.userScreenName = @"@ericsoco";
+	self.tweetModel.user = [[[TwitterClient instance] authorizedUser] copy];
+	
+	self.usernameLabel.text = self.tweetModel.user.name;
+	self.screennameLabel.text = self.tweetModel.user.screenName;
+	self.profileImageView.layer.cornerRadius = 4.0;
+	self.profileImageView.layer.masksToBounds = YES;
+	[self.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.tweetModel.user.profileImageUrl]]
+								 placeholderImage:nil//[UIImage imageNamed:@"placeholder-avatar"]
+										  success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+											  self.profileImageView.image = image;
+											  /*
+											   self.profileImageView.alpha = 0.0;
+											   self.profileImageView.image = image;
+											   [UIView animateWithDuration:0.35 animations:^{
+											   self.profileImageView.alpha = 1.0;
+											   }];
+											   */
+										  }
+										  failure:NULL];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		95B082D0185C4788AF2C9C81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0AD9E2BBC9439998E8ACEF /* libPods.a */; };
+		CA105AEF18E8CAB200F78D28 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA105AEE18E8CAB200F78D28 /* UserModel.m */; };
 		CAC9599918E3EBE9000141E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599818E3EBE9000141E1 /* Foundation.framework */; };
 		CAC9599B18E3EBE9000141E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */; };
 		CAC9599D18E3EBE9000141E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599C18E3EBE9000141E1 /* UIKit.framework */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA105AED18E8CAB200F78D28 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		CA105AEE18E8CAB200F78D28 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		CAC9599518E3EBE9000141E1 /* Quitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC9599818E3EBE9000141E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -252,6 +255,8 @@
 			children = (
 				CAC959F418E3FDAC000141E1 /* TweetModel.h */,
 				CAC959F518E3FDAC000141E1 /* TweetModel.m */,
+				CA105AED18E8CAB200F78D28 /* UserModel.h */,
+				CA105AEE18E8CAB200F78D28 /* UserModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				CAC959D918E3ED37000141E1 /* TweetComposeViewController.m in Sources */,
 				CAC959CA18E3EC79000141E1 /* TweetListViewController.m in Sources */,
 				CAC959A918E3EBE9000141E1 /* AppDelegate.m in Sources */,
+				CA105AEF18E8CAB200F78D28 /* UserModel.m in Sources */,
 				CAC959A518E3EBE9000141E1 /* main.m in Sources */,
 				CAC959DF18E3EEBD000141E1 /* TweetViewCell.m in Sources */,
 				CAC959D418E3ED1E000141E1 /* TweetDetailViewController.m in Sources */,
