@@ -10,6 +10,7 @@
 #import "TwitterClient.h"
 #import "TweetModel.h"
 #import "TweetViewCell.h"
+#import "TweetComposeViewController.h"
 
 @interface TweetListViewController ()
 
@@ -50,6 +51,9 @@
 	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign out" style:UIBarButtonItemStylePlain target:self action:@selector(signOutPressed)];
 	[leftButton setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
 	self.navigationItem.leftBarButtonItem = leftButton;
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(newTweetPressed)];
+	[rightButton setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+	self.navigationItem.rightBarButtonItem = rightButton;
 	
 	/*
 	TwitterClient *twitterClient = [TwitterClient instance];
@@ -123,6 +127,31 @@
 		self.cellForMetrics = [self.tableView dequeueReusableCellWithIdentifier:@"TweetViewCell"];
 	}
 	return self.cellForMetrics;
+}
+
+
+#pragma mark - Tweet compose management
+- (void)newTweetPressed {
+	TweetComposeViewController *tweetComposeViewController = [[TweetComposeViewController alloc] init];
+	tweetComposeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+	tweetComposeViewController.delegate = self;
+	
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tweetComposeViewController];
+	
+//	[self.navigationController presentViewController:tweetComposeViewController animated:YES completion:nil];
+	[self.navigationController presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)tweetComposeViewController:(TweetComposeViewController *)tweetComposeViewController didComposeTweet:(TweetModel *)tweetModel {
+	if (tweetModel) {
+		NSLog(@"Add tweet model to tweetModels list?");
+	} else {
+		NSLog(@"Cancelled.");
+	}
+	
+	[self.navigationController dismissViewControllerAnimated:YES completion:^{
+		NSLog(@"Update display with new tweet?");
+	}];
 }
 
 

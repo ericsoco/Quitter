@@ -32,7 +32,7 @@
 	self.navController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
 	self.window.rootViewController = self.navController;
 	
-	[self.navController.navigationBar setBarTintColor:[UIColor colorWithRed:0.475 green:0.722 blue:0.918 alpha:1.0]];
+	[self.navController.navigationBar setBarTintColor:[UIColor colorWithRed:121.0/255.0 green:184.0/255.0 blue:234.0/255.0 alpha:1.0]];
 	[self.navController.navigationBar setTranslucent:YES];
 	
 	[[UINavigationBar appearance] setTitleTextAttributes:@{
@@ -63,7 +63,6 @@
 	self.twitterClient = [TwitterClient instance];
 	if ([self.twitterClient isAuthorized]) {
 		// If already authorized, go straight to tweet list
-//		[self.tweetListViewController displayUserTweets];
 		[self.navController pushViewController:self.tweetListViewController animated:NO];
 	}
 	
@@ -80,7 +79,6 @@
 			[self.twitterClient fetchAccessTokenWithPath:accessTokenPath method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query] success:^(BDBOAuthToken *accessToken) {
 				// Persist OAuth access token and immediately display tweet list
 				[self.twitterClient.requestSerializer saveAccessToken: accessToken];
-//				[self.tweetListViewController displayUserTweets];
 				[self.navController pushViewController:self.tweetListViewController animated:NO];
 			} failure:^(NSError *error) {
 				NSLog(@"error getting access token%@", error);
