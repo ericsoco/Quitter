@@ -10,4 +10,14 @@
 
 @interface TweetModel : NSObject
 
+@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *numRetweets;
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *userScreenName;
+@property (strong, nonatomic) NSString *userProfileImageUrl;
+
++ (TweetModel *)initWithJSON:(NSDictionary *)json;
+
+
 @end

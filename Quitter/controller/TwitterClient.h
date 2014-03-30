@@ -12,8 +12,7 @@
 
 + (TwitterClient *)instance;
 
-- (void)login;
-
-//- (AFHTTPRequestOperation *)requestTweets;
+- (void)authorizeApp;
+- (void)fetchHomeTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success;
 
 @end

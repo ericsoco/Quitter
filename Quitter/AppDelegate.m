@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
 #import "TweetListViewController.h"
 #import "TwitterClient.h"
 
 @interface AppDelegate ()
 
 @property (strong, nonatomic) TwitterClient *twitterClient;
+@property (strong, nonatomic) UINavigationController *navController;
+@property (strong, nonatomic) LoginViewController *loginViewController;
+@property (strong, nonatomic) TweetListViewController *tweetListViewController;
 
 @end
 
@@ -23,12 +27,13 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	
-	TweetListViewController *tweetListViewController = [[TweetListViewController alloc] init];
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tweetListViewController];
-	self.window.rootViewController = navController;
+	self.loginViewController = [[LoginViewController alloc] init];
+	self.tweetListViewController = [[TweetListViewController alloc] init];
+	self.navController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
+	self.window.rootViewController = self.navController;
 	
-	[navController.navigationBar setBarTintColor:[UIColor colorWithRed:0.475 green:0.722 blue:0.918 alpha:1.0]];
-	[navController.navigationBar setTranslucent:YES];
+	[self.navController.navigationBar setBarTintColor:[UIColor colorWithRed:0.475 green:0.722 blue:0.918 alpha:1.0]];
+	[self.navController.navigationBar setTranslucent:YES];
 	
 	[[UINavigationBar appearance] setTitleTextAttributes:@{
 		NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]/*,
@@ -56,7 +61,11 @@
 	 */
 	
 	self.twitterClient = [TwitterClient instance];
-	[self.twitterClient login];
+	if ([self.twitterClient isAuthorized]) {
+		// If already authorized, go straight to tweet list
+//		[self.tweetListViewController displayUserTweets];
+		[self.navController pushViewController:self.tweetListViewController animated:NO];
+	}
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -65,12 +74,14 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 	if ([url.scheme isEqualToString:@"quitterapp"]) {
-		if ([url.host isEqualToString:@"oauth-login"]) {
+		if ([url.host isEqualToString:@"oauth-authorizeApp"]) {
 			NSString *accessTokenPath = @"oauth/access_token";
 			
 			[self.twitterClient fetchAccessTokenWithPath:accessTokenPath method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query] success:^(BDBOAuthToken *accessToken) {
-				NSLog(@"got access token");
+				// Persist OAuth access token and immediately display tweet list
 				[self.twitterClient.requestSerializer saveAccessToken: accessToken];
+//				[self.tweetListViewController displayUserTweets];
+				[self.navController pushViewController:self.tweetListViewController animated:NO];
 			} failure:^(NSError *error) {
 				NSLog(@"error getting access token%@", error);
 			}];

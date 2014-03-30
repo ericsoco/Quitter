@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "TwitterClient.h"
 
 @interface LoginViewController ()
 
@@ -40,7 +40,7 @@
 }
 
 - (IBAction)loginButtonTapped:(id)sender {
-	NSLog(@"login");
+	[[TwitterClient instance] authorizeApp];
 }
 
 @end

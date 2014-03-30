@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TweetListViewController : UIViewController
+@interface TweetListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (void)displayUserTweets;
 
 @end
