@@ -35,16 +35,23 @@
     return self;
 }
 
+- (id)initWithTweetModel:(TweetModel *)model {
+	self = [super init];
+	self.tweetModel = model;
+	return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 	
 	// UINavigationBar setup
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelPressed)];
+//	self.navigationItem.title = @"Compose";
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelTapped)];
 	[leftButton setTintColor:[UIColor colorWithRed:121.0/255.0 green:184.0/255.0 blue:234.0/255.0 alpha:1.0]];
 	self.navigationItem.leftBarButtonItem = leftButton;
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(tweetPressed)];
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(tweetTapped)];
 	[rightButton setTintColor:[UIColor colorWithRed:121.0/255.0 green:184.0/255.0 blue:234.0/255.0 alpha:1.0]];
 	self.navigationItem.rightBarButtonItem = rightButton;
 	
@@ -55,26 +62,19 @@
 	
 	self.composeTextView.delegate = self;
 	
-	self.tweetModel = [[TweetModel alloc] init];
-	self.tweetModel.user = [[[TwitterClient instance] authorizedUser] copy];
+	if (!self.tweetModel) {
+		self.tweetModel = [[TweetModel alloc] init];
+		self.tweetModel.user = [[[TwitterClient instance] authorizedUser] copy];
+	}
 	
 	self.usernameLabel.text = self.tweetModel.user.name;
 	self.screennameLabel.text = self.tweetModel.user.screenName;
+	self.composeTextView.text = self.tweetModel.text;
+	[self textViewDidChange:self.composeTextView];
+	
 	self.profileImageView.layer.cornerRadius = 4.0;
 	self.profileImageView.layer.masksToBounds = YES;
-	[self.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.tweetModel.user.profileImageUrl]]
-								 placeholderImage:nil//[UIImage imageNamed:@"placeholder-avatar"]
-										  success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-											  self.profileImageView.image = image;
-											  /*
-											   self.profileImageView.alpha = 0.0;
-											   self.profileImageView.image = image;
-											   [UIView animateWithDuration:0.35 animations:^{
-											   self.profileImageView.alpha = 1.0;
-											   }];
-											   */
-										  }
-										  failure:NULL];
+	[self.profileImageView setImageWithURL:[NSURL URLWithString:self.tweetModel.user.profileImageUrl]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -86,6 +86,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 /*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// Dismiss keyboard on touch outside
@@ -94,9 +95,6 @@
 	[super touchesBegan:touches withEvent:event];
 }
 */
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-	self.tweetModel.text = textField.text;
-}
 
 - (void)textViewDidChange:(UITextView *)textView {
 	int charCount = 140 - textView.text.length;
@@ -112,11 +110,12 @@
 	self.charCountLabel.text = [NSString stringWithFormat:@"%d", charCount];
 }
 
-- (void)cancelPressed {
+- (void)cancelTapped {
 	[self.delegate tweetComposeViewController:self didComposeTweet:nil];
 }
 
-- (void)tweetPressed {
+- (void)tweetTapped {
+	self.tweetModel.text = self.composeTextView.text;
 	[self.delegate tweetComposeViewController:self didComposeTweet:self.tweetModel];
 }
 

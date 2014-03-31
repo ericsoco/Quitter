@@ -7,6 +7,7 @@
 //
 
 #import "TweetModel.h"
+#import "MHPrettyDate.h"
 
 @implementation TweetModel
 
@@ -29,25 +30,37 @@
 		model.id = json[@"id_str"];
 		model.text = json[@"text"];
 		model.numRetweets = json[@"retweet_count"];
-		model.user = [UserModel initWithJSON:json[@"user"]];
-//		model.userName = json[@"user"][@"name"];
-//		model.userScreenName = json[@"user"][@"screen_name"];
-//		model.userProfileImageUrl = json[@"user"][@"profile_image_url_https"];
+		model.numFavorites = json[@"favorite_count"];
 		
-		/*
-		model.locationString = [NSString stringWithFormat:@"%@, %@", model.address, model.neighborhood];
+		model.datestamp = [[TweetModel longDateFormatter] dateFromString:json[@"created_at"]];
+		model.shortDateStr = [MHPrettyDate prettyDateFromDate:model.datestamp withFormat:MHPrettyDateShortRelativeTime];
+		model.longDateStr = [NSDateFormatter localizedStringFromDate:model.datestamp dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
 		
-		NSMutableArray *categoryNames = [NSMutableArray array];
-		[(NSArray *)json[@"categories"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-			[categoryNames addObject:((NSArray *)obj)[0]];
-		}];
-		model.categories = [categoryNames componentsJoinedByString:@", "];
-		*/
+		NSDictionary *retweetStatus = json[@"retweeted_status"];
+		if (retweetStatus) {
+			// favorite_count exists within retweeted_status when retweeted_status exists.
+			model.numFavorites = retweetStatus[@"favorite_count"];
+			model.retweeter = [UserModel initWithJSON:json[@"user"]];
+			model.user = [UserModel initWithJSON:retweetStatus[@"user"]];
+		} else {
+			model.user = [UserModel initWithJSON:json[@"user"]];
+		}
 		
 		[TweetModel models][json[@"id"]] = model;
 	}
 	
 	return model;
+}
+
++ (NSDateFormatter *)longDateFormatter {
+	static NSDateFormatter *longDateFormatter;
+	
+	if (!longDateFormatter) {
+		longDateFormatter = [[NSDateFormatter alloc] init];
+		[longDateFormatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+	}
+	
+	return longDateFormatter;
 }
 
 - (NSString *)description {

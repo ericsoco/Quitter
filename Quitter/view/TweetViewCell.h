@@ -9,7 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "TweetModel.h"
 
+@class TweetViewCell;
+@protocol TweetViewCellDelegate <NSObject>
+
+- (void)tweetViewCell:(TweetViewCell *)tweetViewCell replyWasTapped:(id)sender;
+- (void)tweetViewCell:(TweetViewCell *)tweetViewCell retweetWasTapped:(id)sender;
+- (void)tweetViewCell:(TweetViewCell *)tweetViewCell favoriteWasTapped:(id)sender;
+
+@end
+
 @interface TweetViewCell : UITableViewCell
+
+@property (strong, nonatomic) id<TweetViewCellDelegate> delegate;
 
 - (void)initWithModel:(TweetModel *)model;
 - (CGFloat)calcHeightWithModel:(TweetModel *)model;

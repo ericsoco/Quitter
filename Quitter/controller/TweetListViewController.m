@@ -9,8 +9,8 @@
 #import "TweetListViewController.h"
 #import "TwitterClient.h"
 #import "TweetModel.h"
-#import "TweetViewCell.h"
 #import "TweetComposeViewController.h"
+#import "TweetDetailViewController.h"
 
 @interface TweetListViewController ()
 
@@ -26,10 +26,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		
 		// Custom initialization
-		self.navigationItem.title = @"Quitter";
-		
 	}
 	return self;
 }
@@ -41,6 +38,7 @@
     // UITableView setup
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+	self.tableView.separatorInset = UIEdgeInsetsZero;
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 	
 	// Register cell nibs
@@ -48,21 +46,13 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"TweetViewCell"];
 	
 	// UINavigationBar setup
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign out" style:UIBarButtonItemStylePlain target:self action:@selector(signOutPressed)];
+	self.navigationItem.title = @"Home";
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign out" style:UIBarButtonItemStylePlain target:self action:@selector(signOutTapped)];
 	[leftButton setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
 	self.navigationItem.leftBarButtonItem = leftButton;
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(newTweetPressed)];
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(newTweetTapped)];
 	[rightButton setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
 	self.navigationItem.rightBarButtonItem = rightButton;
-	
-	/*
-	TwitterClient *twitterClient = [TwitterClient instance];
-	if (![twitterClient isAuthorized]) {
-		[twitterClient authorizeApp];
-	} else {
-		[self displayUserTweets];
-	}
-	*/
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -93,9 +83,18 @@
 	}];
 }
 
-- (void)signOutPressed {
+- (void)signOutTapped {
 	[[TwitterClient instance].requestSerializer removeAccessToken];
 	[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)presentTweetComposeViewControllerWithTweetModel:(TweetModel *)tweetModel {
+	TweetComposeViewController *tweetComposeViewController = [[TweetComposeViewController alloc] initWithTweetModel:tweetModel];
+	tweetComposeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+	tweetComposeViewController.delegate = self;
+	
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tweetComposeViewController];
+	[self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 #pragma mark - UITableView protocol implementation
@@ -108,50 +107,89 @@
 	if (!self.tweetModels || [self.tweetModels count] == 0) { return cell; }
 	
 	[cell initWithModel:[self.tweetModels objectAtIndex:[indexPath row]]];
+	cell.delegate = self;
 	return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 100;
-	/*
-	if (!self.tweetModels || [self.tweetModels count] == 0) { return 90; }
+	if (!self.tweetModels || [self.tweetModels count] == 0) { return 100; }
 	return [[self cellForMetrics] calcHeightWithModel:self.tweetModels[[indexPath row]]];
-	 */
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	TweetDetailViewController *tweetDetailViewController = [[TweetDetailViewController alloc] initWithTweetModel:self.tweetModels[indexPath.row]];
+	[self.navigationController pushViewController:tweetDetailViewController animated:YES];
+	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /**
  * Generate a cell to populate with data and measure.
  */
+@synthesize cellForMetrics = _cellForMetrics;
 - (TweetViewCell *) cellForMetrics {
-	if (!self.cellForMetrics) {
+	if (!_cellForMetrics) {
 		self.cellForMetrics = [self.tableView dequeueReusableCellWithIdentifier:@"TweetViewCell"];
 	}
-	return self.cellForMetrics;
+	return _cellForMetrics;
+}
+
+
+#pragma mark - TweetViewCellDelegate implementation
+- (void)tweetViewCell:(TweetViewCell *)tweetViewCell replyWasTapped:(id)sender {
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:tweetViewCell];
+	TweetModel *tweetModel = self.tweetModels[indexPath.row];
+	
+	TweetModel *replyTweetModel = [[TweetModel alloc] init];
+	replyTweetModel.user = [[[TwitterClient instance] authorizedUser] copy];
+	if (tweetModel.retweeter) {
+		replyTweetModel.text = [NSString stringWithFormat:@"@%@ @%@", tweetModel.user.screenName,  tweetModel.retweeter.screenName];
+	} else {
+		replyTweetModel.text = [NSString stringWithFormat:@"@%@", tweetModel.user.screenName];
+	}
+	
+	[self presentTweetComposeViewControllerWithTweetModel:replyTweetModel];
+}
+
+- (void)tweetViewCell:(TweetViewCell *)tweetViewCell retweetWasTapped:(id)sender {
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:tweetViewCell];
+	TweetModel *tweetModel = self.tweetModels[indexPath.row];
+	
+	[[TwitterClient instance] retweetTweetWithId:tweetModel.id success:^(NSDictionary *response) {
+		// TODO: store id of new tweet (retweet) for use in unretweeting
+	}];
+	
+}
+
+- (void)tweetViewCell:(TweetViewCell *)tweetViewCell favoriteWasTapped:(id)sender {
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:tweetViewCell];
+	TweetModel *tweetModel = self.tweetModels[indexPath.row];
+	
+	[[TwitterClient instance] favoriteTweetWithId:tweetModel.id];
 }
 
 
 #pragma mark - Tweet compose management
-- (void)newTweetPressed {
-	TweetComposeViewController *tweetComposeViewController = [[TweetComposeViewController alloc] init];
-	tweetComposeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-	tweetComposeViewController.delegate = self;
-	
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tweetComposeViewController];
-	
-//	[self.navigationController presentViewController:tweetComposeViewController animated:YES completion:nil];
-	[self.navigationController presentViewController:navController animated:YES completion:nil];
+- (void)newTweetTapped {
+	[self presentTweetComposeViewControllerWithTweetModel:nil];
 }
 
 - (void)tweetComposeViewController:(TweetComposeViewController *)tweetComposeViewController didComposeTweet:(TweetModel *)tweetModel {
+	void(^ dismissCompletionHandler)();
+	
 	if (tweetModel) {
-		NSLog(@"Add tweet model to tweetModels list?");
+		[[TwitterClient instance] postTweetWithModel:tweetModel success:^(NSDictionary *response) {
+			NSLog(@"Tweet posted successfully.");
+		}];
+		dismissCompletionHandler = ^{
+			[self.tweetModels insertObject:tweetModel atIndex:0];
+			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+		};
 	} else {
+		dismissCompletionHandler = ^{};
 		NSLog(@"Cancelled.");
 	}
 	
-	[self.navigationController dismissViewControllerAnimated:YES completion:^{
-		NSLog(@"Update display with new tweet?");
-	}];
+	[self.navigationController dismissViewControllerAnimated:YES completion:dismissCompletionHandler];
 }
 
 

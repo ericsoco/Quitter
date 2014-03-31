@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TweetModel.h"
+#import "TweetComposeViewController.h"
 
-@interface TweetDetailViewController : UIViewController
+@interface TweetDetailViewController : UIViewController <TweetComposeDelegate>
+
+- (id)initWithTweetModel:(TweetModel *)model;
 
 @end

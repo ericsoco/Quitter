@@ -79,7 +79,7 @@
 			[self.twitterClient fetchAccessTokenWithPath:accessTokenPath method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query] success:^(BDBOAuthToken *accessToken) {
 				// Persist OAuth access token and immediately display tweet list
 				[self.twitterClient.requestSerializer saveAccessToken: accessToken];
-				[self.twitterClient fetchAccountCredentials:^(UserModel *userModel) {
+				[self.twitterClient fetchAccountCredentialsWithSuccess:^(UserModel *userModel) {
 					[self.navController pushViewController:self.tweetListViewController animated:NO];
 				}];
 			} failure:^(NSError *error) {

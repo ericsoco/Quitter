@@ -8,6 +8,7 @@
 
 #import "BDBOAuth1RequestOperationManager.h"
 #import "UserModel.h"
+#import "TweetModel.h"
 
 @interface TwitterClient : BDBOAuth1RequestOperationManager
 
@@ -17,6 +18,11 @@
 
 - (void)authorizeApp;
 - (void)fetchHomeTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success;
-- (void)fetchAccountCredentials:(void (^)(UserModel *userModel))success;
+- (void)fetchAccountCredentialsWithSuccess:(void (^)(UserModel *userModel))success;
+- (void)postTweetWithModel:(TweetModel *)tweetModel success:(void (^)(NSDictionary *response))success;
+- (void)retweetTweetWithId:(NSString *)tweetId success:(void (^)(NSDictionary *response))success;
+- (void)deleteTweetWithId:(NSString *)tweetId;
+- (void)favoriteTweetWithId:(NSString *)tweetId;
+- (void)unfavoriteTweetWithId:(NSString *)tweetId;
 
 @end

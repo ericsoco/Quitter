@@ -13,11 +13,13 @@
 
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) NSString *numRetweets;
+@property (strong, nonatomic) NSNumber *numRetweets;
+@property (strong, nonatomic) NSNumber *numFavorites;
 @property (strong, nonatomic) UserModel *user;
-//@property (strong, nonatomic) NSString *userName;
-//@property (strong, nonatomic) NSString *userScreenName;
-//@property (strong, nonatomic) NSString *userProfileImageUrl;
+@property (strong, nonatomic) UserModel *retweeter;
+@property (strong, nonatomic) NSDate *datestamp;
+@property (strong, nonatomic) NSString *shortDateStr;
+@property (strong, nonatomic) NSString *longDateStr;
 
 + (TweetModel *)initWithJSON:(NSDictionary *)json;
 

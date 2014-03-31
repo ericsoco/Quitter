@@ -20,4 +20,6 @@
 
 @property (strong, nonatomic) id <TweetComposeDelegate> delegate;
 
+- (id)initWithTweetModel:(TweetModel *)model;
+
 @end

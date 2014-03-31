@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TweetComposeViewController.h"
+#import "TweetViewCell.h"
 
-@interface TweetListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TweetComposeDelegate>
+@interface TweetListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TweetComposeDelegate, TweetViewCellDelegate>
 
 - (void)displayUserTweets;
 

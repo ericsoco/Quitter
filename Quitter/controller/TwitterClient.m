@@ -94,7 +94,7 @@
 		} else {
 			// bad server response
 			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
-										 userInfo:@{@"message": @"Invalid response",
+										 userInfo:@{@"message": @"[fetchHomeTimeline] invalid response",
 													@"response": response
 													}]);
 		}
@@ -102,7 +102,7 @@
 	
 }
 
-- (void)fetchAccountCredentials:(void (^)(UserModel *userModel))success {
+- (void)fetchAccountCredentialsWithSuccess:(void (^)(UserModel *userModel))success {
 	
 	NSString *requestPath = @"1.1/account/verify_credentials.json";
 	
@@ -119,12 +119,59 @@
 		} else {
 			// bad server response
 			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
-										 userInfo:@{@"message": @"Invalid response",
+										 userInfo:@{@"message": @"[fetchAccountCredentials] invalid response",
 													@"response": response
 													}]);
 		}
 	} failure:failure];
 	
+}
+
+- (void)postTweetWithModel:(TweetModel *)tweetModel success:(void (^)(NSDictionary *response))success {
+	
+	NSString *requestPath = @"1.1/statuses/update.json";
+	
+	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"error posting tweet:%@", error);
+		//		[ZAActivityBar showErrorWithStatus:@"Something went wrong. Please pull down to reload tweets."];
+	};
+	
+	NSDictionary *params = @{@"status": tweetModel.text};
+	
+	[self POST:requestPath parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+		if ([response isKindOfClass:[NSDictionary class]]) {
+			success(response);
+		} else {
+			// bad server response
+			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
+										 userInfo:@{@"message": @"[postTweetWithModel] invalid response",
+													@"response": response
+													}]);
+		}
+	} failure:failure];
+	
+}
+
+- (void)retweetTweetWithId:(NSString *)tweetId success:(void (^)(NSDictionary *response))success {
+//	NSString *requestPath = @"statuses/retweet/:id.json";
+//	NSDictionary *params = @{@"id": tweetId};
+	NSLog(@"retweet with id: %@", tweetId);
+}
+
+- (void)deleteTweetWithId:(NSString *)tweetId {
+//	NSString *requestPath = @"statuses/destroy/:id.json";
+//	NSDictionary *params = @{@"id": tweetId};
+}
+
+- (void)favoriteTweetWithId:(NSString *)tweetId {
+//	NSString *requestPath = @"favorites/create.json";
+//	NSDictionary *params = @{@"id": tweetId};
+	NSLog(@"favorite with id: %@", tweetId);
+}
+
+- (void)unfavoriteTweetWithId:(NSString *)tweetId {
+//	NSString *requestPath = @"favorites/destroy.json";
+//	NSDictionary *params = @{@"id": tweetId};
 }
 
 @end

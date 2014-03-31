@@ -29,7 +29,7 @@
 		
 		model.id = json[@"id_str"];
 		model.name = json[@"name"];
-		model.screenName = [NSString stringWithFormat:@"@%@", json[@"screen_name"]];
+		model.screenName = json[@"screen_name"];
 		model.profileImageUrl = json[@"profile_image_url_https"];
 		
 		[UserModel models][model.id] = model;
