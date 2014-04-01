@@ -191,7 +191,7 @@
     </objects>
     <resources>
         <image name="reply.png" width="16" height="16"/>
-        <image name="retweet.png" width="16" height="16"/>
+        <image name="retweet.png" width="16" height="10"/>
         <image name="star.png" width="16" height="16"/>
     </resources>
 </document>

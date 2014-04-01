@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WFw-Pu-Icp">
-                        <rect key="frame" x="10" y="21" width="36" height="36"/>
+                        <rect key="frame" x="10" y="18" width="36" height="36"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="C90-bL-EFU"/>
@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NM-LN-Tmg">
-                        <rect key="frame" x="54" y="21" width="72" height="21"/>
+                        <rect key="frame" x="54" y="18" width="72" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Zeq-l9-Zma"/>
@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet copy" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="brr-2e-4t3">
-                        <rect key="frame" x="54" y="42" width="246" height="17"/>
+                        <rect key="frame" x="54" y="39" width="246" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="246" id="Urt-PQ-alB"/>
@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjW-LX-ixX">
-                        <rect key="frame" x="136" y="21" width="65" height="21"/>
+                        <rect key="frame" x="136" y="18" width="65" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="fo3-tb-uSi"/>
@@ -78,7 +78,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgC-KS-zfg">
-                        <rect key="frame" x="279" y="21" width="21" height="21"/>
+                        <rect key="frame" x="279" y="18" width="21" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="N5b-az-czi"/>
@@ -129,12 +129,12 @@
                             <action selector="faveButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IHL-7p-wFi"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet.png" translatesAutoresizingMaskIntoConstraints="NO" id="5qZ-6A-G8S">
-                        <rect key="frame" x="54" y="3" width="16" height="16"/>
+                    <imageView userInteractionEnabled="NO" alpha="0.39999999999999963" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet.png" translatesAutoresizingMaskIntoConstraints="NO" id="5qZ-6A-G8S">
+                        <rect key="frame" x="54" y="6" width="16" height="10"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="10" id="ICk-wx-ysy"/>
                             <constraint firstAttribute="width" constant="16" id="Kc0-zr-tg5"/>
-                            <constraint firstAttribute="height" constant="16" id="N14-dS-oxb"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -146,7 +146,7 @@
                     <constraint firstItem="QaE-qQ-7I8" firstAttribute="leading" secondItem="jWb-8t-Gn1" secondAttribute="trailing" constant="5" id="HPy-iq-bt8"/>
                     <constraint firstItem="VjW-LX-ixX" firstAttribute="bottom" secondItem="7NM-LN-Tmg" secondAttribute="bottom" id="KwN-ci-icF"/>
                     <constraint firstItem="jWb-8t-Gn1" firstAttribute="leading" secondItem="gC2-sv-KFx" secondAttribute="trailing" constant="60" id="LVy-cv-3iR"/>
-                    <constraint firstItem="5qZ-6A-G8S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="LkV-sX-sJf"/>
+                    <constraint firstItem="5qZ-6A-G8S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="LkV-sX-sJf"/>
                     <constraint firstItem="brr-2e-4t3" firstAttribute="top" secondItem="7NM-LN-Tmg" secondAttribute="bottom" id="Ols-ff-9s1"/>
                     <constraint firstAttribute="bottom" secondItem="ywp-Yz-pxY" secondAttribute="bottom" constant="5" id="QZt-Fw-GJ3"/>
                     <constraint firstItem="ouA-2c-fB0" firstAttribute="bottom" secondItem="gC2-sv-KFx" secondAttribute="bottom" constant="3" id="X8g-oA-rWF"/>
@@ -172,7 +172,7 @@
                 <outlet property="retweetCountLabel" destination="ouA-2c-fB0" id="iEc-Ps-iKI"/>
                 <outlet property="retweetedByIcon" destination="5qZ-6A-G8S" id="4PU-xB-EWu"/>
                 <outlet property="retweetedByLabel" destination="w8e-MR-1TH" id="wHu-fK-qlL"/>
-                <outlet property="retweetedLabelIconHeightConstraint" destination="N14-dS-oxb" id="18s-GK-2MI"/>
+                <outlet property="retweetedLabelIconHeightConstraint" destination="ICk-wx-ysy" id="Zq2-wB-JoW"/>
                 <outlet property="screennameLabel" destination="VjW-LX-ixX" id="hX5-ZC-iwE"/>
                 <outlet property="timestampLabel" destination="vgC-KS-zfg" id="qad-Oo-MS0"/>
                 <outlet property="tweetLabel" destination="brr-2e-4t3" id="k7v-LD-nTj"/>
@@ -182,6 +182,6 @@
     </objects>
     <resources>
         <image name="reply.png" width="16" height="16"/>
-        <image name="retweet.png" width="16" height="16"/>
+        <image name="retweet.png" width="16" height="10"/>
     </resources>
 </document>

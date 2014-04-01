@@ -72,10 +72,10 @@
 	if (model.retweeter) {
 		self.retweetedByLabel.text = [NSString stringWithFormat:@"%@ retweeted", model.retweeter.screenName];
 		self.retweetedByIcon.hidden = self.retweetedByLabel.hidden = NO;
-		self.retweetedLabelIconHeightConstraint.constant = 16.0;
+		self.retweetedLabelIconHeightConstraint.constant = 10.0;
 	} else {
 		self.retweetedByIcon.hidden = self.retweetedByLabel.hidden = YES;
-		self.retweetedLabelIconHeightConstraint.constant = 6.0;
+		self.retweetedLabelIconHeightConstraint.constant = 4.0;
 	}
 	
 	self.profileImageView.layer.cornerRadius = 4.0;
