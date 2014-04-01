@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Quitter/model/TweetModel.m"
-            timestampString = "417936356.358268"
+            timestampString = "418028746.724046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "+initWithJSON:"
             landmarkType = "5">
          </BreakpointContent>

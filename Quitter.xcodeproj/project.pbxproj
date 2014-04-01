@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		95B082D0185C4788AF2C9C81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0AD9E2BBC9439998E8ACEF /* libPods.a */; };
 		CA105AEF18E8CAB200F78D28 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA105AEE18E8CAB200F78D28 /* UserModel.m */; };
+		CA105B3918EAA08800F78D28 /* retweetSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3518EAA08800F78D28 /* retweetSelected.png */; };
+		CA105B3A18EAA08800F78D28 /* retweetSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3618EAA08800F78D28 /* retweetSelected@2x.png */; };
+		CA105B3B18EAA08800F78D28 /* starSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3718EAA08800F78D28 /* starSelected.png */; };
+		CA105B3C18EAA08800F78D28 /* starSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3818EAA08800F78D28 /* starSelected@2x.png */; };
 		CAC9599918E3EBE9000141E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599818E3EBE9000141E1 /* Foundation.framework */; };
 		CAC9599B18E3EBE9000141E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */; };
 		CAC9599D18E3EBE9000141E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599C18E3EBE9000141E1 /* UIKit.framework */; };
@@ -37,8 +41,6 @@
 		CAC959EB18E3F2BE000141E1 /* retweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC959E518E3F2BE000141E1 /* retweet@2x.png */; };
 		CAC959EC18E3F2BE000141E1 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC959E618E3F2BE000141E1 /* star.png */; };
 		CAC959ED18E3F2BE000141E1 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC959E718E3F2BE000141E1 /* star@2x.png */; };
-		CAC959F018E3F38A000141E1 /* star_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC959EE18E3F38A000141E1 /* star_filled.png */; };
-		CAC959F118E3F38A000141E1 /* star_filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC959EF18E3F38A000141E1 /* star_filled@2x.png */; };
 		CAC959F618E3FDAC000141E1 /* TweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC959F518E3FDAC000141E1 /* TweetModel.m */; };
 		CAC959F918E402BA000141E1 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC959F818E402BA000141E1 /* TwitterClient.m */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,10 @@
 /* Begin PBXFileReference section */
 		CA105AED18E8CAB200F78D28 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		CA105AEE18E8CAB200F78D28 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		CA105B3518EAA08800F78D28 /* retweetSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweetSelected.png; sourceTree = "<group>"; };
+		CA105B3618EAA08800F78D28 /* retweetSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweetSelected@2x.png"; sourceTree = "<group>"; };
+		CA105B3718EAA08800F78D28 /* starSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starSelected.png; sourceTree = "<group>"; };
+		CA105B3818EAA08800F78D28 /* starSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starSelected@2x.png"; sourceTree = "<group>"; };
 		CAC9599518E3EBE9000141E1 /* Quitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC9599818E3EBE9000141E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,8 +99,6 @@
 		CAC959E518E3F2BE000141E1 /* retweet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet@2x.png"; sourceTree = "<group>"; };
 		CAC959E618E3F2BE000141E1 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		CAC959E718E3F2BE000141E1 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
-		CAC959EE18E3F38A000141E1 /* star_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_filled.png; sourceTree = "<group>"; };
-		CAC959EF18E3F38A000141E1 /* star_filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_filled@2x.png"; sourceTree = "<group>"; };
 		CAC959F418E3FDAC000141E1 /* TweetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetModel.h; sourceTree = "<group>"; };
 		CAC959F518E3FDAC000141E1 /* TweetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetModel.m; sourceTree = "<group>"; };
 		CAC959F718E402BA000141E1 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
@@ -217,14 +221,16 @@
 		CAC959E118E3F2A7000141E1 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				CAC959EE18E3F38A000141E1 /* star_filled.png */,
-				CAC959EF18E3F38A000141E1 /* star_filled@2x.png */,
-				CAC959E218E3F2BE000141E1 /* reply.png */,
-				CAC959E318E3F2BE000141E1 /* reply@2x.png */,
 				CAC959E418E3F2BE000141E1 /* retweet.png */,
 				CAC959E518E3F2BE000141E1 /* retweet@2x.png */,
+				CA105B3518EAA08800F78D28 /* retweetSelected.png */,
+				CA105B3618EAA08800F78D28 /* retweetSelected@2x.png */,
 				CAC959E618E3F2BE000141E1 /* star.png */,
 				CAC959E718E3F2BE000141E1 /* star@2x.png */,
+				CA105B3718EAA08800F78D28 /* starSelected.png */,
+				CA105B3818EAA08800F78D28 /* starSelected@2x.png */,
+				CAC959E218E3F2BE000141E1 /* reply.png */,
+				CAC959E318E3F2BE000141E1 /* reply@2x.png */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -339,20 +345,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC959E818E3F2BE000141E1 /* reply.png in Resources */,
-				CAC959F018E3F38A000141E1 /* star_filled.png in Resources */,
 				CAC959E018E3EEBD000141E1 /* TweetViewCell.xib in Resources */,
-				CAC959F118E3F38A000141E1 /* star_filled@2x.png in Resources */,
 				CAC959D018E3ED00000141E1 /* LoginViewController.xib in Resources */,
 				CAC959A318E3EBE9000141E1 /* InfoPlist.strings in Resources */,
 				CAC959D518E3ED1E000141E1 /* TweetDetailViewController.xib in Resources */,
 				CAC959EC18E3F2BE000141E1 /* star.png in Resources */,
 				CAC959AB18E3EBE9000141E1 /* Images.xcassets in Resources */,
 				CAC959EA18E3F2BE000141E1 /* retweet.png in Resources */,
+				CA105B3B18EAA08800F78D28 /* starSelected.png in Resources */,
+				CA105B3C18EAA08800F78D28 /* starSelected@2x.png in Resources */,
 				CAC959ED18E3F2BE000141E1 /* star@2x.png in Resources */,
+				CA105B3A18EAA08800F78D28 /* retweetSelected@2x.png in Resources */,
 				CAC959CB18E3EC79000141E1 /* TweetListViewController.xib in Resources */,
 				CAC959DA18E3ED37000141E1 /* TweetComposeViewController.xib in Resources */,
 				CAC959EB18E3F2BE000141E1 /* retweet@2x.png in Resources */,
 				CAC959E918E3F2BE000141E1 /* reply@2x.png in Resources */,
+				CA105B3918EAA08800F78D28 /* retweetSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

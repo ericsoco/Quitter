@@ -31,6 +31,8 @@
 		model.text = json[@"text"];
 		model.numRetweets = json[@"retweet_count"];
 		model.numFavorites = json[@"favorite_count"];
+		model.favoritedByMe = [json[@"favorited"] boolValue];
+		model.retweetedByMe = [json[@"retweeted"] boolValue];
 		
 		model.datestamp = [[TweetModel longDateFormatter] dateFromString:json[@"created_at"]];
 		model.shortDateStr = [MHPrettyDate prettyDateFromDate:model.datestamp withFormat:MHPrettyDateShortRelativeTime];

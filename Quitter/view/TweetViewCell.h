@@ -25,4 +25,7 @@
 - (void)initWithModel:(TweetModel *)model;
 - (CGFloat)calcHeightWithModel:(TweetModel *)model;
 
+@property (assign, nonatomic) BOOL retweeted;
+@property (assign, nonatomic) BOOL favorited;
+
 @end

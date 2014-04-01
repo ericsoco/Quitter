@@ -154,9 +154,18 @@
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:tweetViewCell];
 	TweetModel *tweetModel = self.tweetModels[indexPath.row];
 	
-	[[TwitterClient instance] retweetTweetWithId:tweetModel.id success:^(NSDictionary *response) {
-		// TODO: store id of new tweet (retweet) for use in unretweeting
-	}];
+	if (!tweetModel.retweetedByMe) {
+		[[TwitterClient instance] retweetTweetWithId:tweetModel.id success:^(NSDictionary *response) {
+			// TODO: store id of new tweet (retweet) for use in unretweeting
+//			tweetModel.id = 
+		}];
+		tweetModel.retweetedByMe = YES;
+	} else {
+		[[TwitterClient instance] deleteTweetWithId:tweetModel.id];
+		tweetModel.retweetedByMe = NO;
+	}
+	
+	tweetViewCell.retweeted = tweetModel.retweetedByMe;
 	
 }
 
@@ -164,7 +173,15 @@
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:tweetViewCell];
 	TweetModel *tweetModel = self.tweetModels[indexPath.row];
 	
-	[[TwitterClient instance] favoriteTweetWithId:tweetModel.id];
+	if (!tweetModel.favoritedByMe) {
+		[[TwitterClient instance] favoriteTweetWithId:tweetModel.id];
+		tweetModel.favoritedByMe = YES;
+	} else {
+		[[TwitterClient instance] unfavoriteTweetWithId:tweetModel.id];
+		tweetModel.favoritedByMe = NO;
+	}
+	
+	tweetViewCell.favorited = tweetModel.favoritedByMe;
 }
 
 

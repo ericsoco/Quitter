@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *faveCountLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileImageTopConstraint;
 
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
@@ -80,8 +81,10 @@
 	if (self.tweetModel.retweeter) {
 		self.retweetedByLabel.text = [NSString stringWithFormat:@"%@ retweeted", self.tweetModel.retweeter.screenName];
 		self.retweetedByIcon.hidden = self.retweetedByLabel.hidden = NO;
+		self.profileImageTopConstraint.constant = 98.0;
 	} else {
 		self.retweetedByIcon.hidden = self.retweetedByLabel.hidden = YES;
+		self.profileImageTopConstraint.constant = 78.0;
 	}
 	
 	self.profileImageView.layer.cornerRadius = 4.0;

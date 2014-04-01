@@ -20,6 +20,8 @@
 @property (strong, nonatomic) NSDate *datestamp;
 @property (strong, nonatomic) NSString *shortDateStr;
 @property (strong, nonatomic) NSString *longDateStr;
+@property (assign, nonatomic) BOOL favoritedByMe;
+@property (assign, nonatomic) BOOL retweetedByMe;
 
 + (TweetModel *)initWithJSON:(NSDictionary *)json;
 
