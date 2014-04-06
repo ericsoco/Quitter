@@ -13,6 +13,14 @@
 		CA105B3A18EAA08800F78D28 /* retweetSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3618EAA08800F78D28 /* retweetSelected@2x.png */; };
 		CA105B3B18EAA08800F78D28 /* starSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3718EAA08800F78D28 /* starSelected.png */; };
 		CA105B3C18EAA08800F78D28 /* starSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA105B3818EAA08800F78D28 /* starSelected@2x.png */; };
+		CA37581E18F0AC7200D596AB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37581C18F0AC7200D596AB /* ProfileViewController.m */; };
+		CA37581F18F0AC7200D596AB /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA37581D18F0AC7200D596AB /* ProfileViewController.xib */; };
+		CA37582318F0C12C00D596AB /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37582118F0C12C00D596AB /* MainMenuViewController.m */; };
+		CA37582418F0C12C00D596AB /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA37582218F0C12C00D596AB /* MainMenuViewController.xib */; };
+		CA37582C18F0CB2C00D596AB /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37582B18F0CB2C00D596AB /* ProfileHeaderView.m */; };
+		CA37582E18F0CBB200D596AB /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA37582D18F0CBB200D596AB /* ProfileHeaderView.xib */; };
+		CA37583218F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37583018F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m */; };
+		CA37583318F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA37583118F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib */; };
 		CAC9599918E3EBE9000141E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599818E3EBE9000141E1 /* Foundation.framework */; };
 		CAC9599B18E3EBE9000141E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */; };
 		CAC9599D18E3EBE9000141E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599C18E3EBE9000141E1 /* UIKit.framework */; };
@@ -62,6 +70,18 @@
 		CA105B3618EAA08800F78D28 /* retweetSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweetSelected@2x.png"; sourceTree = "<group>"; };
 		CA105B3718EAA08800F78D28 /* starSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starSelected.png; sourceTree = "<group>"; };
 		CA105B3818EAA08800F78D28 /* starSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starSelected@2x.png"; sourceTree = "<group>"; };
+		CA37581B18F0AC7200D596AB /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		CA37581C18F0AC7200D596AB /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		CA37581D18F0AC7200D596AB /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		CA37582018F0C12C00D596AB /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		CA37582118F0C12C00D596AB /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		CA37582218F0C12C00D596AB /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		CA37582A18F0CB2C00D596AB /* ProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderView.h; sourceTree = "<group>"; };
+		CA37582B18F0CB2C00D596AB /* ProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderView.m; sourceTree = "<group>"; };
+		CA37582D18F0CBB200D596AB /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		CA37582F18F0CEAE00D596AB /* ProfileSubheaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSubheaderTableViewCell.h; sourceTree = "<group>"; };
+		CA37583018F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSubheaderTableViewCell.m; sourceTree = "<group>"; };
+		CA37583118F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSubheaderTableViewCell.xib; sourceTree = "<group>"; };
 		CAC9599518E3EBE9000141E1 /* Quitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC9599818E3EBE9000141E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -214,6 +234,12 @@
 				CAC959DC18E3EEBD000141E1 /* TweetViewCell.h */,
 				CAC959DD18E3EEBD000141E1 /* TweetViewCell.m */,
 				CAC959DE18E3EEBD000141E1 /* TweetViewCell.xib */,
+				CA37582A18F0CB2C00D596AB /* ProfileHeaderView.h */,
+				CA37582B18F0CB2C00D596AB /* ProfileHeaderView.m */,
+				CA37582D18F0CBB200D596AB /* ProfileHeaderView.xib */,
+				CA37582F18F0CEAE00D596AB /* ProfileSubheaderTableViewCell.h */,
+				CA37583018F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m */,
+				CA37583118F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -238,6 +264,9 @@
 		CAC959F218E3FCCD000141E1 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				CA37582018F0C12C00D596AB /* MainMenuViewController.h */,
+				CA37582118F0C12C00D596AB /* MainMenuViewController.m */,
+				CA37582218F0C12C00D596AB /* MainMenuViewController.xib */,
 				CAC959C718E3EC79000141E1 /* TweetListViewController.h */,
 				CAC959C818E3EC79000141E1 /* TweetListViewController.m */,
 				CAC959C918E3EC79000141E1 /* TweetListViewController.xib */,
@@ -250,6 +279,9 @@
 				CAC959D618E3ED37000141E1 /* TweetComposeViewController.h */,
 				CAC959D718E3ED37000141E1 /* TweetComposeViewController.m */,
 				CAC959D818E3ED37000141E1 /* TweetComposeViewController.xib */,
+				CA37581B18F0AC7200D596AB /* ProfileViewController.h */,
+				CA37581C18F0AC7200D596AB /* ProfileViewController.m */,
+				CA37581D18F0AC7200D596AB /* ProfileViewController.xib */,
 				CAC959F718E402BA000141E1 /* TwitterClient.h */,
 				CAC959F818E402BA000141E1 /* TwitterClient.m */,
 			);
@@ -344,8 +376,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA37581F18F0AC7200D596AB /* ProfileViewController.xib in Resources */,
 				CAC959E818E3F2BE000141E1 /* reply.png in Resources */,
 				CAC959E018E3EEBD000141E1 /* TweetViewCell.xib in Resources */,
+				CA37583318F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib in Resources */,
 				CAC959D018E3ED00000141E1 /* LoginViewController.xib in Resources */,
 				CAC959A318E3EBE9000141E1 /* InfoPlist.strings in Resources */,
 				CAC959D518E3ED1E000141E1 /* TweetDetailViewController.xib in Resources */,
@@ -353,6 +387,7 @@
 				CAC959AB18E3EBE9000141E1 /* Images.xcassets in Resources */,
 				CAC959EA18E3F2BE000141E1 /* retweet.png in Resources */,
 				CA105B3B18EAA08800F78D28 /* starSelected.png in Resources */,
+				CA37582418F0C12C00D596AB /* MainMenuViewController.xib in Resources */,
 				CA105B3C18EAA08800F78D28 /* starSelected@2x.png in Resources */,
 				CAC959ED18E3F2BE000141E1 /* star@2x.png in Resources */,
 				CA105B3A18EAA08800F78D28 /* retweetSelected@2x.png in Resources */,
@@ -360,6 +395,7 @@
 				CAC959DA18E3ED37000141E1 /* TweetComposeViewController.xib in Resources */,
 				CAC959EB18E3F2BE000141E1 /* retweet@2x.png in Resources */,
 				CAC959E918E3F2BE000141E1 /* reply@2x.png in Resources */,
+				CA37582E18F0CBB200D596AB /* ProfileHeaderView.xib in Resources */,
 				CA105B3918EAA08800F78D28 /* retweetSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,10 +452,14 @@
 				CAC959F918E402BA000141E1 /* TwitterClient.m in Sources */,
 				CAC959F618E3FDAC000141E1 /* TweetModel.m in Sources */,
 				CAC959D918E3ED37000141E1 /* TweetComposeViewController.m in Sources */,
+				CA37582318F0C12C00D596AB /* MainMenuViewController.m in Sources */,
 				CAC959CA18E3EC79000141E1 /* TweetListViewController.m in Sources */,
 				CAC959A918E3EBE9000141E1 /* AppDelegate.m in Sources */,
 				CA105AEF18E8CAB200F78D28 /* UserModel.m in Sources */,
+				CA37582C18F0CB2C00D596AB /* ProfileHeaderView.m in Sources */,
 				CAC959A518E3EBE9000141E1 /* main.m in Sources */,
+				CA37581E18F0AC7200D596AB /* ProfileViewController.m in Sources */,
+				CA37583218F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m in Sources */,
 				CAC959DF18E3EEBD000141E1 /* TweetViewCell.m in Sources */,
 				CAC959D418E3ED1E000141E1 /* TweetDetailViewController.m in Sources */,
 			);

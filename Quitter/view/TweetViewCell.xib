@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjW-LX-ixX">
-                        <rect key="frame" x="130" y="19" width="65" height="21"/>
+                        <rect key="frame" x="131" y="19" width="65" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="fo3-tb-uSi"/>
@@ -160,7 +160,7 @@
                     <constraint firstItem="WFw-Pu-Icp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="o6h-C1-xnZ"/>
                     <constraint firstItem="QaE-qQ-7I8" firstAttribute="bottom" secondItem="jWb-8t-Gn1" secondAttribute="bottom" constant="3" id="r1W-pH-Mnf"/>
                     <constraint firstItem="7NM-LN-Tmg" firstAttribute="leading" secondItem="5qZ-6A-G8S" secondAttribute="leading" id="rRB-NG-3mt"/>
-                    <constraint firstItem="VjW-LX-ixX" firstAttribute="leading" secondItem="7NM-LN-Tmg" secondAttribute="trailing" constant="4" id="vhJ-dJ-Hoy"/>
+                    <constraint firstItem="VjW-LX-ixX" firstAttribute="leading" secondItem="7NM-LN-Tmg" secondAttribute="trailing" constant="5" id="vhJ-dJ-Hoy"/>
                     <constraint firstItem="7NM-LN-Tmg" firstAttribute="top" secondItem="WFw-Pu-Icp" secondAttribute="top" id="wCD-6f-7Ny"/>
                 </constraints>
             </tableViewCellContentView>

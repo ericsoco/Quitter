@@ -31,6 +31,10 @@
 		model.name = json[@"name"];
 		model.screenName = json[@"screen_name"];
 		model.profileImageUrl = json[@"profile_image_url_https"];
+		model.profileBackgroundImageUrl = json[@"profile_background_image_url_https"];
+		model.numTweets = json[@"statuses_count"];
+		model.numFollowing = json[@"friends_count"];
+		model.numFollowers = json[@"followers_count"];
 		
 		[UserModel models][model.id] = model;
 	}

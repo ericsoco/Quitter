@@ -17,8 +17,13 @@
 @property (strong, nonatomic) UserModel *authorizedUser;
 
 - (void)authorizeApp;
-- (void)fetchHomeTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success;
 - (void)fetchAccountCredentialsWithSuccess:(void (^)(UserModel *userModel))success;
+
+- (void)fetchHomeTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success;
+- (void)fetchMentionsTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success;
+- (void)fetchRetweetsTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success;
+- (void)fetchUserTimelineWithUserId:(NSString *)userId success:(void (^)(NSMutableArray *tweetModels))success;
+
 - (void)postTweetWithModel:(TweetModel *)tweetModel success:(void (^)(NSDictionary *response))success;
 - (void)retweetTweetWithId:(NSString *)tweetId success:(void (^)(NSDictionary *response))success;
 - (void)deleteTweetWithId:(NSString *)tweetId;

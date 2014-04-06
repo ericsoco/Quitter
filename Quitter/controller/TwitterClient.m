@@ -75,6 +75,31 @@
 	
 }
 
+- (void)fetchAccountCredentialsWithSuccess:(void (^)(UserModel *userModel))success {
+	
+	NSString *requestPath = @"1.1/account/verify_credentials.json";
+	
+	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"error verifying account credentials:%@", error);
+		//		[ZAActivityBar showErrorWithStatus:@"Something went wrong. Please pull down to reload tweets."];
+	};
+	
+	[self GET:requestPath parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
+		if ([response isKindOfClass:[NSDictionary class]]) {
+			UserModel *userModel = [UserModel initWithJSON:response];
+			self.authorizedUser = userModel;
+			success(userModel);
+		} else {
+			// bad server response
+			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
+										 userInfo:@{@"message": @"[fetchAccountCredentials] invalid response",
+													@"response": response
+													}]);
+		}
+	} failure:failure];
+	
+}
+
 - (void)fetchHomeTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success {
 	
 	NSString *requestPath = @"1.1/statuses/home_timeline.json";
@@ -102,24 +127,82 @@
 	
 }
 
-- (void)fetchAccountCredentialsWithSuccess:(void (^)(UserModel *userModel))success {
+- (void)fetchMentionsTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success {
 	
-	NSString *requestPath = @"1.1/account/verify_credentials.json";
+	NSString *requestPath = @"1.1/statuses/mentions_timeline.json";
 	
 	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"error verifying account credentials:%@", error);
+		NSLog(@"error fetching tweets:%@", error);
 		//		[ZAActivityBar showErrorWithStatus:@"Something went wrong. Please pull down to reload tweets."];
 	};
 	
 	[self GET:requestPath parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-		if ([response isKindOfClass:[NSDictionary class]]) {
-			UserModel *userModel = [UserModel initWithJSON:response];
-			self.authorizedUser = userModel;
-			success(userModel);
+		NSMutableArray *tweetModels = [NSMutableArray array];
+		if ([response isKindOfClass:[NSArray class]]) {
+			for (NSDictionary *tweetData in response) {
+				[tweetModels addObject:[TweetModel initWithJSON:tweetData]];
+			}
+			success(tweetModels);
 		} else {
 			// bad server response
 			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
-										 userInfo:@{@"message": @"[fetchAccountCredentials] invalid response",
+										 userInfo:@{@"message": @"[fetchMentionsTimeline] invalid response",
+													@"response": response
+													}]);
+		}
+	} failure:failure];
+	
+}
+
+- (void)fetchRetweetsTimelineWithSuccess:(void (^)(NSMutableArray *tweetModels))success {
+	
+	NSString *requestPath = @"1.1/statuses/retweets_of_me.json";
+	
+	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"error fetching tweets:%@", error);
+		//		[ZAActivityBar showErrorWithStatus:@"Something went wrong. Please pull down to reload tweets."];
+	};
+	
+	[self GET:requestPath parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
+		NSMutableArray *tweetModels = [NSMutableArray array];
+		if ([response isKindOfClass:[NSArray class]]) {
+			for (NSDictionary *tweetData in response) {
+				[tweetModels addObject:[TweetModel initWithJSON:tweetData]];
+			}
+			success(tweetModels);
+		} else {
+			// bad server response
+			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
+										 userInfo:@{@"message": @"[fetchMentionsTimeline] invalid response",
+													@"response": response
+													}]);
+		}
+	} failure:failure];
+	
+}
+
+- (void)fetchUserTimelineWithUserId:(NSString *)userId success:(void (^)(NSMutableArray *tweetModels))success {
+	
+	NSString *requestPath = @"1.1/statuses/user_timeline.json";
+	
+	void(^ failure)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"error fetching tweets:%@", error);
+		//		[ZAActivityBar showErrorWithStatus:@"Something went wrong. Please pull down to reload tweets."];
+	};
+	
+	NSDictionary *params = @{@"user_id": userId};
+	
+	[self GET:requestPath parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+		NSMutableArray *tweetModels = [NSMutableArray array];
+		if ([response isKindOfClass:[NSArray class]]) {
+			for (NSDictionary *tweetData in response) {
+				[tweetModels addObject:[TweetModel initWithJSON:tweetData]];
+			}
+			success(tweetModels);
+		} else {
+			// bad server response
+			failure(nil, [NSError errorWithDomain:@"com.transmote.quitter" code:1
+										 userInfo:@{@"message": @"[fetchUserTimeline] invalid response",
 													@"response": response
 													}]);
 		}

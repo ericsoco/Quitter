@@ -14,6 +14,10 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *screenName;
 @property (strong, nonatomic) NSString *profileImageUrl;
+@property (strong, nonatomic) NSString *profileBackgroundImageUrl;
+@property (strong, nonatomic) NSNumber *numTweets;
+@property (strong, nonatomic) NSNumber *numFollowing;
+@property (strong, nonatomic) NSNumber *numFollowers;
 
 + (UserModel *)initWithJSON:(NSDictionary *)json;
 

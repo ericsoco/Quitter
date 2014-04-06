@@ -12,6 +12,13 @@
 
 @interface TweetListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TweetComposeDelegate, TweetViewCellDelegate>
 
-- (void)displayUserTweets;
+typedef NS_ENUM(NSInteger, TweetListType) {
+	TweetListTypeHome,
+	TweetListTypeMentions,
+	TweetListTypeRetweets
+};
+
+- (id)initWithTweetListType:(TweetListType)tweetListType;
+- (void)displayTweets;
 
 @end

@@ -18,10 +18,19 @@
 @property (strong, nonatomic) NSMutableArray *tweetModels;
 @property (strong, nonatomic) TweetViewCell *cellForMetrics;
 
+@property (assign, nonatomic) TweetListType tweetListType;
+
 @end
 
 
 @implementation TweetListViewController
+
+- (id)initWithTweetListType:(TweetListType)tweetListType {
+	self = [super init];
+	self.tweetListType = tweetListType;
+	
+	return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,7 +55,19 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"TweetViewCell"];
 	
 	// UINavigationBar setup
-	self.navigationItem.title = @"Home";
+	switch (self.tweetListType) {
+		case TweetListTypeHome:
+			self.navigationItem.title = @"Home";
+			break;
+		case TweetListTypeMentions:
+			self.navigationItem.title = @"Mentions";
+			break;
+		case TweetListTypeRetweets:
+			self.navigationItem.title = @"Retweets";
+			break;
+		default:
+			break;
+	}
 	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign out" style:UIBarButtonItemStylePlain target:self action:@selector(signOutTapped)];
 	[leftButton setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
 	self.navigationItem.leftBarButtonItem = leftButton;
@@ -57,11 +78,13 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	
+	NSLog(@"viewDidAppear with tweetListType:%d", self.tweetListType);
+	
 	// Load tweets if not already loaded and authorized.
 	if (!self.tweetModels || [self.tweetModels count] == 0) {
 		TwitterClient *twitterClient = [TwitterClient instance];
 		if ([twitterClient isAuthorized]) {
-			[self displayUserTweets];
+			[self displayTweets];
 		}
 	}
 	
@@ -72,7 +95,70 @@
 	// Dispose of any resources that can be recreated.
 }
 
-- (void)displayUserTweets {
+- (void)displayTweets {
+	void(^ success)(NSMutableArray *tweetModels) = ^(NSMutableArray *tweetModels) {
+		if (!self.tweetModels) {
+			self.tweetModels = tweetModels;
+		} else {
+			[self.tweetModels addObjectsFromArray:tweetModels];
+		}
+		[self.tableView reloadData];
+	};
+	
+	NSLog(@"displayTweets with tweetListType:%d", self.tweetListType);
+	switch (self.tweetListType) {
+		case TweetListTypeHome:
+			[[TwitterClient instance] fetchHomeTimelineWithSuccess:success];
+			break;
+		case TweetListTypeMentions:
+			[[TwitterClient instance] fetchMentionsTimelineWithSuccess:success];
+			break;
+		case TweetListTypeRetweets:
+			[[TwitterClient instance] fetchRetweetsTimelineWithSuccess:success];
+			break;
+		default:
+			break;
+	}
+	
+	/*
+	SEL tweetFetchSelector;
+	switch (self.tweetListType) {
+		case TweetListTypeHome:
+			tweetFetchSelector = NSSelectorFromString(@"fetchHomeTimelineWithSuccess:");
+			break;
+		case TweetListTypeMentions:
+			tweetFetchSelector = NSSelectorFromString(@"fetchMentionsTimelineWithSuccess:");
+			break;
+		case TweetListTypeRetweets:
+			tweetFetchSelector = NSSelectorFromString(@"fetchRetweetsTimelineWithSuccess:");
+			break;
+		default:
+			break;
+	}
+	
+	IMP imp = [[TwitterClient instance] methodForSelector:tweetFetchSelector];
+	void (*func)(id, SEL, )
+
+	IMP imp = [_controller methodForSelector:selector];
+	CGRect (*func)(id, SEL, CGRect, UIView *) = (void *)imp;
+	CGRect result = func(_controller, selector, someRect, someView);
+	 */
+	
+	
+	/*
+	if (tweetFetchSelector) {
+		[[TwitterClient instance] performSelector:tweetFetchSelector withObject:^(NSMutableArray *tweetModels) {
+			if (!self.tweetModels) {
+				self.tweetModels = tweetModels;
+			} else {
+				[self.tweetModels addObjectsFromArray:tweetModels];
+			}
+			[self.tableView reloadData];
+		}];
+	}
+	*/
+	
+	/*
 	[[TwitterClient instance] fetchHomeTimelineWithSuccess:^(NSMutableArray *tweetModels) {
 		if (!self.tweetModels) {
 			self.tweetModels = tweetModels;
@@ -81,6 +167,7 @@
 		}
 		[self.tableView reloadData];
 	}];
+	*/
 }
 
 - (void)signOutTapped {
@@ -98,7 +185,7 @@
 }
 
 #pragma mark - UITableView protocol implementation
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return self.tweetModels ? [self.tweetModels count] : 0;
 }
 

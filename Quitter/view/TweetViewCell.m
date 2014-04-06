@@ -62,7 +62,6 @@
 		self.retweetCountLabel.hidden = YES;
 	}
 	if (model.numFavorites) {
-		NSLog(@"faves: %@", model.numFavorites);
 		self.faveCountLabel.text = [NSString stringWithFormat:@"%@", model.numFavorites];
 		self.faveCountLabel.hidden = NO;
 	} else {
