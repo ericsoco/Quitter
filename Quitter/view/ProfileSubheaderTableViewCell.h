@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserModel.h"
 
 @interface ProfileSubheaderTableViewCell : UITableViewCell
+
+- (void)initWithModel:(UserModel *)model;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "ProfileSubheaderTableViewCell.h"
-#import "UserModel.h"
 
 @interface ProfileSubheaderTableViewCell ()
 

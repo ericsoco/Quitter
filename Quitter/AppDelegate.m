@@ -170,6 +170,7 @@ static double mainNavOpenX;
 	
 	CGRect frame = self.mainNavController.view.frame;
 	double remainingDistance;
+	CGFloat damping = isOpen ? 0.60f : 1.0f;	// don't bounce when closing, as this reveals stuff below on right edge
 	
 	if (isOpen) {
 		remainingDistance = mainNavOpenX - frame.origin.x;
@@ -180,7 +181,7 @@ static double mainNavOpenX;
 	}
 	
 	double initialSpringVelocity = remainingDistance / velocity.x;
-	[UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:0.60 initialSpringVelocity:initialSpringVelocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:damping initialSpringVelocity:initialSpringVelocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		self.mainNavController.view.frame = frame;
 	} completion:nil];
 }

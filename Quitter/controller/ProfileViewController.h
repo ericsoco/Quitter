@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserModel.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UserModel *userModel;
 

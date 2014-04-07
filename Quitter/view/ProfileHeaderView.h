@@ -11,6 +11,7 @@
 
 @interface ProfileHeaderView : UIView
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 - (void)initWithModel:(UserModel *)model;
 
 @end

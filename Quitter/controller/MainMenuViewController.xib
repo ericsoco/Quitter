@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMenuViewController">
             <connections>
+                <outlet property="headerView" destination="jNN-1c-LRn" id="0AE-am-70N"/>
                 <outlet property="tableView" destination="ec0-VO-uYw" id="qqn-Rh-cCb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -15,14 +16,31 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ec0-VO-uYw">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ec0-VO-uYw">
+                    <rect key="frame" x="0.0" y="160" width="320" height="408"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNN-1c-LRn" customClass="ProfileHeaderView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="ydk-Xa-y9X"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ec0-VO-uYw" secondAttribute="trailing" id="Jh0-U6-vHV"/>
+                <constraint firstItem="ec0-VO-uYw" firstAttribute="top" secondItem="jNN-1c-LRn" secondAttribute="bottom" id="Od7-4L-qf3"/>
+                <constraint firstAttribute="bottom" secondItem="ec0-VO-uYw" secondAttribute="bottom" id="gKV-yV-Pm0"/>
+                <constraint firstItem="jNN-1c-LRn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hPe-Up-fuN"/>
+                <constraint firstAttribute="trailing" secondItem="jNN-1c-LRn" secondAttribute="trailing" id="hlZ-cK-4df"/>
+                <constraint firstItem="ec0-VO-uYw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nJy-vM-L2d"/>
+                <constraint firstItem="jNN-1c-LRn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xYa-yQ-cCa"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

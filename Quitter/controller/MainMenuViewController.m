@@ -7,8 +7,12 @@
 //
 
 #import "MainMenuViewController.h"
+#import "ProfileHeaderView.h"
+#import "TwitterClient.h"
 
 @interface MainMenuViewController ()
+
+@property (weak, nonatomic) IBOutlet ProfileHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *tableData;
 
@@ -53,6 +57,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	self.headerView.topConstraint.constant = 40;	// make extra room for UIStatusBar
+	[self.headerView initWithModel:[[[TwitterClient instance] authorizedUser] copy]];
 }
 
 
