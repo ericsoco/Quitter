@@ -97,6 +97,9 @@ static double mainNavOpenX;
 	self.mainNavController.view.layer.shadowOpacity = 0.25f;
 	self.mainNavController.view.layer.shadowRadius = 2.0f;
 	self.mainNavController.view.layer.shadowPath = shadowPath.CGPath;
+	
+	[[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.5f]];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)setupStyles {
@@ -181,7 +184,7 @@ static double mainNavOpenX;
 	}
 	
 	double initialSpringVelocity = remainingDistance / velocity.x;
-	[UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:damping initialSpringVelocity:initialSpringVelocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:damping initialSpringVelocity:initialSpringVelocity options:UIViewAnimationOptionAllowUserInteraction animations:^{
 		self.mainNavController.view.frame = frame;
 	} completion:nil];
 }

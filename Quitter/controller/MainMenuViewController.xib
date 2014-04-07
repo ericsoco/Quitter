@@ -30,15 +30,26 @@
                         <constraint firstAttribute="height" constant="160" id="ydk-Xa-y9X"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chx-Az-phH">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.47450980390000003" green="0.72156862749999995" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Jx7-Cc-jUt"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ec0-VO-uYw" secondAttribute="trailing" id="Jh0-U6-vHV"/>
                 <constraint firstItem="ec0-VO-uYw" firstAttribute="top" secondItem="jNN-1c-LRn" secondAttribute="bottom" id="Od7-4L-qf3"/>
+                <constraint firstItem="chx-Az-phH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YYR-87-WN5"/>
                 <constraint firstAttribute="bottom" secondItem="ec0-VO-uYw" secondAttribute="bottom" id="gKV-yV-Pm0"/>
                 <constraint firstItem="jNN-1c-LRn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hPe-Up-fuN"/>
                 <constraint firstAttribute="trailing" secondItem="jNN-1c-LRn" secondAttribute="trailing" id="hlZ-cK-4df"/>
+                <constraint firstAttribute="trailing" secondItem="chx-Az-phH" secondAttribute="trailing" id="lWo-tR-MFs"/>
                 <constraint firstItem="ec0-VO-uYw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nJy-vM-L2d"/>
+                <constraint firstItem="chx-Az-phH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wt5-De-g8T"/>
                 <constraint firstItem="jNN-1c-LRn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xYa-yQ-cCa"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

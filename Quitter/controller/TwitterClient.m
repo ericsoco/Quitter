@@ -85,7 +85,6 @@
 	
 	[self GET:requestPath parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
 		if ([response isKindOfClass:[NSDictionary class]]) {
-			NSLog(@"ACCOUNT:%@", response);
 			UserModel *userModel = [UserModel initWithJSON:response];
 			self.authorizedUser = userModel;
 			success(userModel);

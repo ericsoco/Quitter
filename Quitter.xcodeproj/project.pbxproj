@@ -21,6 +21,7 @@
 		CA37582E18F0CBB200D596AB /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA37582D18F0CBB200D596AB /* ProfileHeaderView.xib */; };
 		CA37583218F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37583018F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m */; };
 		CA37583318F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA37583118F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib */; };
+		CA37583618F26B9A00D596AB /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = CA37583518F26B9A00D596AB /* UIView+Screenshot.m */; };
 		CAC9599918E3EBE9000141E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599818E3EBE9000141E1 /* Foundation.framework */; };
 		CAC9599B18E3EBE9000141E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */; };
 		CAC9599D18E3EBE9000141E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAC9599C18E3EBE9000141E1 /* UIKit.framework */; };
@@ -82,6 +83,8 @@
 		CA37582F18F0CEAE00D596AB /* ProfileSubheaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSubheaderTableViewCell.h; sourceTree = "<group>"; };
 		CA37583018F0CEAE00D596AB /* ProfileSubheaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSubheaderTableViewCell.m; sourceTree = "<group>"; };
 		CA37583118F0CEAE00D596AB /* ProfileSubheaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSubheaderTableViewCell.xib; sourceTree = "<group>"; };
+		CA37583418F26B9A00D596AB /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
+		CA37583518F26B9A00D596AB /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		CAC9599518E3EBE9000141E1 /* Quitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC9599818E3EBE9000141E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAC9599A18E3EBE9000141E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -284,6 +287,8 @@
 				CA37581D18F0AC7200D596AB /* ProfileViewController.xib */,
 				CAC959F718E402BA000141E1 /* TwitterClient.h */,
 				CAC959F818E402BA000141E1 /* TwitterClient.m */,
+				CA37583418F26B9A00D596AB /* UIView+Screenshot.h */,
+				CA37583518F26B9A00D596AB /* UIView+Screenshot.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				CAC959F918E402BA000141E1 /* TwitterClient.m in Sources */,
 				CAC959F618E3FDAC000141E1 /* TweetModel.m in Sources */,
 				CAC959D918E3ED37000141E1 /* TweetComposeViewController.m in Sources */,
+				CA37583618F26B9A00D596AB /* UIView+Screenshot.m in Sources */,
 				CA37582318F0C12C00D596AB /* MainMenuViewController.m in Sources */,
 				CAC959CA18E3EC79000141E1 /* TweetListViewController.m in Sources */,
 				CAC959A918E3EBE9000141E1 /* AppDelegate.m in Sources */,

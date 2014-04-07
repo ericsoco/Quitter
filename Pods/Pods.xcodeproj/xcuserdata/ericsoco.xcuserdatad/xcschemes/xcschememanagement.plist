@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MHPrettyDate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6ECCD5DB7ADB42FEAE04669D</key>
+		<key>6DDC3767CC3F4AB0A909BC7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A613681908B848C587C56094</key>
+		<key>8C3FC100CEA6418A9BF93872</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CCD975EE8C784394A009555F</key>
+		<key>93C3A49B45EA44DDB9CD33A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D472F681357C4861868F3662</key>
+		<key>D203338CFA8D411DB6DC6B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA08D6872B8A4C2A9B0BA83C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

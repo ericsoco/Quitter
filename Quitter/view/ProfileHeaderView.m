@@ -20,17 +20,7 @@
 
 @implementation ProfileHeaderView
 
-- (id)initWithFrame:(CGRect)frame {
-	NSLog(@"header initWithFrame");
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (id)initWithCoder:(NSCoder *)aDecoder {
-	NSLog(@"header initWithCoder");
 	self = [super initWithCoder:aDecoder];
 	
 	UIView *containerView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil][0];
@@ -51,14 +41,13 @@
 	self.profileImageView.layer.cornerRadius = 5.0;
 	self.profileImageView.layer.masksToBounds = YES;
 	[self.profileImageView setImageWithURL:[NSURL URLWithString:model.profileImageUrl]];
-	
+	/*
 	// why is backgroundImageView not clipping to bounds???
 	self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.backgroundImageView.clipsToBounds = YES;
 	self.backgroundImageView.frame = CGRectMake(0, 0, 320, 160);
+	 */
 	[self.backgroundImageView setImageWithURL:[NSURL URLWithString:model.profileBackgroundImageUrl]];
-	
-	NSLog(@"header height:%f", self.bounds.size.height);
 	
 }
 
