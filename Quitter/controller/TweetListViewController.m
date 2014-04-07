@@ -78,8 +78,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	
-	NSLog(@"viewDidAppear with tweetListType:%d", self.tweetListType);
-	
 	// Load tweets if not already loaded and authorized.
 	if (!self.tweetModels || [self.tweetModels count] == 0) {
 		TwitterClient *twitterClient = [TwitterClient instance];
@@ -105,7 +103,6 @@
 		[self.tableView reloadData];
 	};
 	
-	NSLog(@"displayTweets with tweetListType:%d", self.tweetListType);
 	switch (self.tweetListType) {
 		case TweetListTypeHome:
 			[[TwitterClient instance] fetchHomeTimelineWithSuccess:success];
@@ -119,55 +116,6 @@
 		default:
 			break;
 	}
-	
-	/*
-	SEL tweetFetchSelector;
-	switch (self.tweetListType) {
-		case TweetListTypeHome:
-			tweetFetchSelector = NSSelectorFromString(@"fetchHomeTimelineWithSuccess:");
-			break;
-		case TweetListTypeMentions:
-			tweetFetchSelector = NSSelectorFromString(@"fetchMentionsTimelineWithSuccess:");
-			break;
-		case TweetListTypeRetweets:
-			tweetFetchSelector = NSSelectorFromString(@"fetchRetweetsTimelineWithSuccess:");
-			break;
-		default:
-			break;
-	}
-	
-	IMP imp = [[TwitterClient instance] methodForSelector:tweetFetchSelector];
-	void (*func)(id, SEL, )
-
-	IMP imp = [_controller methodForSelector:selector];
-	CGRect (*func)(id, SEL, CGRect, UIView *) = (void *)imp;
-	CGRect result = func(_controller, selector, someRect, someView);
-	 */
-	
-	
-	/*
-	if (tweetFetchSelector) {
-		[[TwitterClient instance] performSelector:tweetFetchSelector withObject:^(NSMutableArray *tweetModels) {
-			if (!self.tweetModels) {
-				self.tweetModels = tweetModels;
-			} else {
-				[self.tweetModels addObjectsFromArray:tweetModels];
-			}
-			[self.tableView reloadData];
-		}];
-	}
-	*/
-	
-	/*
-	[[TwitterClient instance] fetchHomeTimelineWithSuccess:^(NSMutableArray *tweetModels) {
-		if (!self.tweetModels) {
-			self.tweetModels = tweetModels;
-		} else {
-			[self.tweetModels addObjectsFromArray:tweetModels];
-		}
-		[self.tableView reloadData];
-	}];
-	*/
 }
 
 - (void)signOutTapped {

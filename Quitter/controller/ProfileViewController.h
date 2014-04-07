@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserModel.h"
 
 @interface ProfileViewController : UIViewController
+
+@property (strong, nonatomic) UserModel *userModel;
 
 @end

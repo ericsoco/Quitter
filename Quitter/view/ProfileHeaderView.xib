@@ -18,15 +18,15 @@
                     </accessibility>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2kJ-Ln-dwX">
-                    <rect key="frame" x="123" y="20" width="75" height="75"/>
+                    <rect key="frame" x="136" y="20" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="B3L-M3-ZwY"/>
-                        <constraint firstAttribute="width" constant="75" id="eUw-uR-lUT"/>
+                        <constraint firstAttribute="height" constant="48" id="B3L-M3-ZwY"/>
+                        <constraint firstAttribute="width" constant="48" id="eUw-uR-lUT"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-B1-2Xo">
-                    <rect key="frame" x="125" y="103" width="70" height="21"/>
+                    <rect key="frame" x="125" y="76" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="k1o-XE-IMH"/>
@@ -36,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@screenname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5M-pI-cm2">
-                    <rect key="frame" x="118" y="119" width="84" height="21"/>
+                    <rect key="frame" x="118" y="92" width="84" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="qrN-dI-2JT"/>
@@ -51,9 +51,13 @@
                 <constraint firstItem="2kJ-Ln-dwX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="6Gm-Y2-b7v"/>
                 <constraint firstItem="LQE-B1-2Xo" firstAttribute="top" secondItem="2kJ-Ln-dwX" secondAttribute="bottom" constant="8" id="6UW-A4-eGs"/>
                 <constraint firstItem="2kJ-Ln-dwX" firstAttribute="centerX" secondItem="yX5-iu-cVy" secondAttribute="centerX" id="E9A-es-rPV"/>
+                <constraint firstAttribute="trailing" secondItem="yX5-iu-cVy" secondAttribute="trailing" id="J1n-Tc-kPT"/>
                 <constraint firstItem="yX5-iu-cVy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J52-hk-T3N"/>
                 <constraint firstItem="yX5-iu-cVy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QmR-1Y-sf3"/>
                 <constraint firstItem="q5M-pI-cm2" firstAttribute="centerX" secondItem="2kJ-Ln-dwX" secondAttribute="centerX" id="Tgu-LV-9Sa"/>
+                <constraint firstItem="yX5-iu-cVy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UFO-EA-Lbz"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yX5-iu-cVy" secondAttribute="bottom" constant="1" id="gCE-FI-bo2"/>
+                <constraint firstItem="yX5-iu-cVy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hs1-DY-woh"/>
                 <constraint firstItem="LQE-B1-2Xo" firstAttribute="centerX" secondItem="2kJ-Ln-dwX" secondAttribute="centerX" id="jgF-HQ-FZX"/>
                 <constraint firstAttribute="bottom" secondItem="yX5-iu-cVy" secondAttribute="bottom" constant="1" id="nND-Kt-c5i"/>
                 <constraint firstAttribute="trailing" secondItem="yX5-iu-cVy" secondAttribute="trailing" id="xB4-Gn-1AK"/>
@@ -62,10 +66,10 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="backgroundImageView" destination="yX5-iu-cVy" id="uem-ER-GHM"/>
-                <outlet property="profileImageView" destination="2kJ-Ln-dwX" id="hDd-ly-XPw"/>
-                <outlet property="screennameLabel" destination="q5M-pI-cm2" id="yjm-6V-0Pw"/>
-                <outlet property="usernameLabel" destination="LQE-B1-2Xo" id="m8J-LS-7Py"/>
+                <outlet property="backgroundImageView" destination="yX5-iu-cVy" id="PVT-4D-KqA"/>
+                <outlet property="profileImageView" destination="2kJ-Ln-dwX" id="6Oe-0O-0Fo"/>
+                <outlet property="screennameLabel" destination="q5M-pI-cm2" id="fsA-P6-fI4"/>
+                <outlet property="usernameLabel" destination="LQE-B1-2Xo" id="vv4-Xn-wD7"/>
             </connections>
         </view>
     </objects>

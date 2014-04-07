@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
+                <outlet property="headerView" destination="3m4-9o-xDu" id="skv-D8-R42"/>
+                <outlet property="tableView" destination="CfO-kz-51d" id="deV-JJ-4fP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +15,31 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3m4-9o-xDu" customClass="ProfileHeaderView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="Q9A-f1-8tv"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CfO-kz-51d">
+                    <rect key="frame" x="0.0" y="160" width="320" height="408"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="0.6363608715019089" green="1" blue="0.22464466125628146" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="3m4-9o-xDu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="B0a-tq-yT0"/>
+                <constraint firstItem="3m4-9o-xDu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IQd-sk-iai"/>
+                <constraint firstItem="CfO-kz-51d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TBg-ui-1bY"/>
+                <constraint firstAttribute="trailing" secondItem="CfO-kz-51d" secondAttribute="trailing" id="TCP-1O-scq"/>
+                <constraint firstItem="CfO-kz-51d" firstAttribute="top" secondItem="3m4-9o-xDu" secondAttribute="bottom" id="Xoa-PJ-U0X"/>
+                <constraint firstAttribute="bottom" secondItem="CfO-kz-51d" secondAttribute="bottom" id="uyE-FF-cCW"/>
+                <constraint firstAttribute="trailing" secondItem="3m4-9o-xDu" secondAttribute="trailing" id="xYv-A3-zir"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

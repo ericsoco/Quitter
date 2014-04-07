@@ -43,7 +43,6 @@
 }
 
 - (void)setAuthorizedUser:(UserModel *)authorizedUser {
-	NSLog(@"setAuthorizedUser:%@", authorizedUser);
 	_authorizedUser = authorizedUser;
 	
 	NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:_authorizedUser];
@@ -86,6 +85,7 @@
 	
 	[self GET:requestPath parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
 		if ([response isKindOfClass:[NSDictionary class]]) {
+			NSLog(@"ACCOUNT:%@", response);
 			UserModel *userModel = [UserModel initWithJSON:response];
 			self.authorizedUser = userModel;
 			success(userModel);

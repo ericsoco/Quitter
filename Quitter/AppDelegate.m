@@ -197,6 +197,7 @@ static double mainNavOpenX;
 				// Persist OAuth access token and immediately display tweet list
 				[self.twitterClient.requestSerializer saveAccessToken: accessToken];
 				[self.twitterClient fetchAccountCredentialsWithSuccess:^(UserModel *userModel) {
+					self.profileViewController.userModel = userModel;
 					[self.mainNavController pushViewController:self.homeViewController animated:NO];
 				}];
 			} failure:^(NSError *error) {

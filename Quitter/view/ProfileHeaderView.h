@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserModel.h"
 
 @interface ProfileHeaderView : UIView
+
+- (void)initWithModel:(UserModel *)model;
 
 @end
